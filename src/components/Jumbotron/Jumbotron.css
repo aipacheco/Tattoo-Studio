@@ -1,0 +1,44 @@
+.jumbotron {
+  height: 35em;
+  width: auto;
+  -webkit-animation: fade-in-fwd 2s ease-in both;
+  animation: fade-in-fwd 2s ease-in both;
+}
+@-webkit-keyframes fade-in-fwd {
+  0% {
+    -webkit-transform: translateZ(-80px);
+    transform: translateZ(-80px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+@keyframes fade-in-fwd {
+  0% {
+    -webkit-transform: translateZ(-80px);
+    transform: translateZ(-80px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+.jumbotron .card-img {
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+}
+.card-title {
+  font-family: "Sedgwick Ave", cursive;
+  font-size: 10em;
+  color: rgb(10, 0, 30);
+  text-shadow: 2px 2px 2px rgba(196, 196, 196, 0.804);
+}
+.card-text{
+    margin-top: 1em;
+}

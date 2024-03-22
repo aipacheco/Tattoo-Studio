@@ -18,7 +18,7 @@ export const NavbarCustom = () => {
     <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
         <NavLink to="/">
-        <div>Magik Ink</div>
+        <div className="brand">Magik Ink</div>
         </NavLink>
         {isLoggedIn ? <div>estás logado</div> : <div>no estás logado</div>}
       </div>

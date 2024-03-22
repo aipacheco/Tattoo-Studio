@@ -1,10 +1,11 @@
+import { NavbarCustom } from "../../components/Navbar/NavbarCustom"
 import "./Profile.css"
 
 const Profile = () => {
   return (
-    <div>
-      
-    </div>
+    <>
+      <NavbarCustom />
+    </>
   )
 }
 

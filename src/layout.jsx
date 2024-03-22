@@ -4,8 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Home from "./pages/Home/Home"
 
 export const Layout = () => {
-  /*una ruta se compone de una dirección y unos params, por ejemplo en editcontact le estamos pasando un id, 
-  lo recogemos en el link del boton de modificar en el componente contacts.jsx
+  /*una ruta se compone de una dirección y unos params, 
   -un param se declara poniendo : y detrás el nombre del param - */
 
   return (
@@ -21,4 +20,3 @@ export const Layout = () => {
   )
 }
 
-injectContext(Layout)

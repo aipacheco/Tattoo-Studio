@@ -1,3 +1,7 @@
+.container-register{
+  display: flex;
+  justify-content: center;
+}
 .form {
   margin-top: 3em;
   display: flex;

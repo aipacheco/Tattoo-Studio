@@ -1,9 +1,10 @@
 import "./InputCustom.css"
-const InputCustom = () => {
+// eslint-disable-next-line react/prop-types
+const InputCustom = ({label, type, name, handleChange}) => {
   return (
     <>
-      <label className="form-label">Email address</label>
-      <input type="email" name="" className="form-control"></input>
+      <label className="form-label">{label}</label>
+      <input type={type} name={name} className="form-control"  onChange={handleChange}></input>
     </>
   )
 }

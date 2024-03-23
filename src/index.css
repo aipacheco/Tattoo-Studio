@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(23, 23, 23);
+  background-color: rgb(255, 255, 255);
 }
 #root {
   margin: 0;
@@ -17,3 +17,6 @@ div {
   border: 1px solid red;
 }
 
+h1{
+  font-family: "Sedgwick Ave", cursive;
+}

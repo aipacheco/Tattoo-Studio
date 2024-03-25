@@ -29,6 +29,7 @@ const Register = () => {
     try {
       const userRegister = await RegisterUser(user)
       if (userRegister.success){
+        //pendiente darle un tiempo 
         navigate("/login")
       }
     } catch (error) {

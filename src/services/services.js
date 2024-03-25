@@ -21,9 +21,9 @@ export const RegisterUser = async (user) => {
   }
 }
 
-export const Login = async (user) => {
+export const LoginUser = async (user) => {
   try {
-    const response = await fetch(`${URL}/user/login`, {
+    const response = await fetch(`${URL}/auth/login`, {
       method: "POST",
       headers: HEADERS,
       body: JSON.stringify(user),

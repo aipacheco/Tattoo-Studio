@@ -26,7 +26,7 @@ const Login = () => {
     //validaciones del user
     try {
       const userLogged = await LoginUser(user)
-      console.log(userLogged)
+      // console.log(userLogged)
       if (userLogged.success){
            //pendiente darle un tiempo 
         navigate("/")
@@ -55,6 +55,7 @@ const Login = () => {
             handleChange={handleChange}
           />
           <Button text={"Login"} handleSubmit={handleSubmit} />
+          {/* texto por si no estás registrado */}
         </div>
       </div>
     </>

@@ -4,6 +4,7 @@ import Home from "./pages/Home/Home"
 import Register from "./pages/Register/Register"
 import Login from "./pages/Login/Login"
 import Profile from "./pages/Profile/Profile"
+import Appointment from "./pages/Appointment/Appointment"
 
 export const Layout = () => {
   /*una ruta se compone de una dirección y unos params, 
@@ -17,6 +18,8 @@ export const Layout = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/appointment" element={<Appointment/>} />
+
         </Routes>
         {/* <Footer /> */}
       </BrowserRouter>

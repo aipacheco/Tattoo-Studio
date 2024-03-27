@@ -18,7 +18,7 @@ const Appointment = () => {
     }
   }, [token, navigate])
 
-  return (
+  return ( 
     <>
       <div className="container d-flex justify-content-center mt-2" >
         <div className="col-12 col-md-6 col-lg-6">

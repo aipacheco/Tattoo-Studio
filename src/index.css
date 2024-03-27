@@ -1,5 +1,7 @@
 body {
   background-color: rgb(36, 36, 36);
+  background-image: radial-gradient(circle, #ff000098 1%, transparent 1%); /* Degradado de puntos rojos */
+  background-size: 10px 10px; /* Tamaño de los puntos */
   color: rgb(236, 252, 246);
 
 }

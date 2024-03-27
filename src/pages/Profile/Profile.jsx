@@ -11,7 +11,7 @@ const Profile = () => {
     if (token) {
       console.log("hola raffaella")
     } else {
-      navigate("/")
+      navigate("/login")
     }
   }, [token, navigate])
 

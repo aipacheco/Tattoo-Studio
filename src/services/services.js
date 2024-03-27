@@ -1,5 +1,3 @@
-import {store} from "../redux/store"
-import { setAuthToken} from "../redux/authSlice"
 const URL = "https://proyecto4-tatuajes.onrender.com/api"
 
 
@@ -32,8 +30,6 @@ export const LoginUser = async (user) => {
     if (!data.success) {
       throw new Error(data.message)
     }
-    //para usar el store directamente sin tener que usar useDispatch()
-    store.dispatch(setAuthToken(data.token))
     return data
   } catch (error) {
     console.log("Error al iniciar sesión", error)

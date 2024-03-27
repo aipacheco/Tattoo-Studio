@@ -25,7 +25,7 @@ const DropdownMenu = () => {
       <div id="dropdown-menu" className="dropdown me-4">
         <a
           id="boton-drop"
-          className="btn btn-outline-dark dropdown-toggle "
+          className="btn btn-outline-light dropdown-toggle "
           href="#"
           role="button"
           data-bs-toggle="dropdown"

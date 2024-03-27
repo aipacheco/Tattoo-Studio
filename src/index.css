@@ -1,9 +1,7 @@
 body {
-  background-color: rgb(255, 255, 255);
-  /* background-image: url("../src/assets/279866-P621EW-730.png"); */
-  /* background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; */
+  background-color: rgb(36, 36, 36);
+  color: rgb(236, 252, 246);
+
 }
 #root {
   margin: 0;
@@ -21,6 +19,10 @@ div {
   border: 1px solid red;
 }
 
-h1{
+h1 {
   font-family: "Sedgwick Ave", cursive;
+  color: rgb(236, 252, 246);
+}
+.btn-outline-light:hover{
+  background-color: rgb(236, 252, 246)!important;
 }

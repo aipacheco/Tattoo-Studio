@@ -4,7 +4,7 @@ import "./LinkButton.css"
 
 const LinkButton = ({direction, text, type, altColor}) => {
 
-  const buttonClass = altColor ? "btn btn-secondary" : "btn btn-outline-dark";
+  const buttonClass = altColor ? "btn btn-secondary" : "btn btn-outline-light m-2";
 
   return (
     <div>

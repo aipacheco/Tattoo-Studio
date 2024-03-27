@@ -1,6 +1,6 @@
 const URL = "https://proyecto4-tatuajes.onrender.com/api"
 const HEADERS = {
-  "Content-Type": "application/json",
+  "Content-Type": "application/json"
 }
 
 export const RegisterUser = async (user) => {

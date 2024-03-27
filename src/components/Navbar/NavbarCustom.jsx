@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 import { NavLink } from "react-router-dom"
 import "./NavbarCustom.css"
+import DropdownMenu from "../DropdownMenu/DropdownMenu"
+import ButtonsNavbar from "../ButtonsNavbar/ButtonsNavbar"
 
 export const NavbarCustom = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -20,7 +22,7 @@ export const NavbarCustom = () => {
         <NavLink to="/">
         <div className="brand">Magik Ink</div>
         </NavLink>
-        {isLoggedIn ? <div>estás logado</div> : <div>no estás logado</div>}
+        {isLoggedIn ? <DropdownMenu /> : <ButtonsNavbar />}
       </div>
     </nav>
   )

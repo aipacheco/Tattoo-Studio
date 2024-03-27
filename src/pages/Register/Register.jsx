@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import Button from "../../components/Button/Button"
 import InputCustom from "../../components/Input/InputCustom"
-import { NavbarCustom } from "../../components/Navbar/NavbarCustom"
 import { RegisterUser } from "../../services/services"
 import "./Register.css"
 import { useState } from "react"
@@ -40,7 +39,6 @@ const Register = () => {
 
   return (
     <>
-      <NavbarCustom />
       <div className="container container-register">
         <h1 className="">Registro de usuario</h1>
       </div>

@@ -1,25 +1,21 @@
 import { useEffect } from "react"
-import { NavbarCustom } from "../../components/Navbar/NavbarCustom"
 import "./Profile.css"
 import { useNavigate } from "react-router-dom"
+import { useSelector } from "react-redux"
 
 const Profile = () => {
   const navigate = useNavigate()
+  const token = useSelector((state) => state.auth.token)
 
   useEffect(() => {
-    const token = localStorage.getItem("token")
     if (token) {
       console.log("hola raffaella")
     } else {
       navigate("/")
     }
-  }, [])
-  
-  return (
-    <>
-      <NavbarCustom />
-    </>
-  )
+  }, [token, navigate])
+
+  return <>Hola payo</>
 }
 
 export default Profile

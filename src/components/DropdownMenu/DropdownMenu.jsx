@@ -1,21 +1,23 @@
 import { useNavigate } from "react-router-dom"
 import "./DropdownMenu.css"
+import { useSelector, useDispatch } from "react-redux"
+import { clearAuthToken } from "../../redux/authSlice"
 
 const DropdownMenu = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const roleName = useSelector((state) => state.auth.roleName)
 
-  const ProfilePage = () => {
-    let roles = localStorage.getItem("role")
-    if (roles == "User") {
+  const handleProfileClick = () => {
+    if (roleName === "user") {
       navigate("/profile")
-    } 
+    }
+    // pendiente añadir admin
   }
 
   const handleLogout = () => {
-    localStorage.removeItem("token")
-    //pendiente de cambiar por redux  
+    dispatch(clearAuthToken())
     navigate("/")
- 
   }
 
   return (
@@ -32,7 +34,7 @@ const DropdownMenu = () => {
           <i className="fa-solid fa-bars"></i>
         </a>
         <ul className="dropdown-menu dropdown-menu-end ">
-          <li onClick={ProfilePage}>
+          <li onClick={handleProfileClick}>
             <p className="dropdown-item">
               <i className="fa-solid fa-user me-1"></i> Mi perfil
             </p>

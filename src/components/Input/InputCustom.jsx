@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 import "./InputCustom.css"
-// eslint-disable-next-line react/prop-types
+
 const InputCustom = ({ label, type, name, handleChange }) => {
   return (
     <>

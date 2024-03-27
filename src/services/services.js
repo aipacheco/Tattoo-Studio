@@ -1,13 +1,10 @@
 const URL = "https://proyecto4-tatuajes.onrender.com/api"
-const HEADERS = {
-  "Content-Type": "application/json"
-}
 
 export const RegisterUser = async (user) => {
   try {
     const response = await fetch(`${URL}/auth/register`, {
       method: "POST",
-      headers: HEADERS,
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
     })
     const data = await response.json()
@@ -25,7 +22,7 @@ export const LoginUser = async (user) => {
   try {
     const response = await fetch(`${URL}/auth/login`, {
       method: "POST",
-      headers: HEADERS,
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
     })
     const data = await response.json()

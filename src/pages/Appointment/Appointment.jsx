@@ -1,5 +1,4 @@
 import Datetime from "../../components/Datetime/Datetime"
-import { NavbarCustom } from "../../components/Navbar/NavbarCustom"
 import Button from "../../components/Button/Button"
 import "./Appointment.css"
 import { useEffect } from "react"
@@ -18,7 +17,6 @@ const Appointment = () => {
   }, [])
   return (
     <>
-      <NavbarCustom />
       <div className="container d-flex justify-content-center mt-2" >
         <div className="col-12 col-md-6 col-lg-6">
           <h1>Selecciona fecha y hora</h1>

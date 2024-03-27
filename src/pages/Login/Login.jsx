@@ -1,14 +1,17 @@
 import { useState } from "react"
 import InputCustom from "../../components/Input/InputCustom"
-import { NavbarCustom } from "../../components/Navbar/NavbarCustom"
 import "./Login.css"
 import Button from "../../components/Button/Button"
 import { useNavigate } from "react-router-dom"
 import { LoginUser } from "../../services/services"
 import Alert from "../../components/Alert/Alert"
 import LinkButton from "../../components/LinkButton/LinkButton"
+import { decodeToken } from "react-jwt"
+import { useDispatch } from "react-redux"
+import { setAuthToken } from "../../redux/authSlice"
 
 const Login = () => {
+  const dispatch = useDispatch()
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -28,10 +31,18 @@ const Login = () => {
     //validaciones del user
     try {
       const userLogged = await LoginUser(user)
-      // console.log(userLogged)
       if (userLogged.success) {
-        //pendiente darle un tiempo
-        navigate("/profile")
+        const decodificado = await decodeToken(userLogged.token)
+        // dispatch setea setAuthToken(la funcion del slicer) con el token y los datos decodificados
+        dispatch(
+          setAuthToken({
+            token: userLogged.token,
+            decodificado: decodificado,
+          })
+        )
+        setTimeout(() => {
+          navigate("/profile")
+        }, 750)
       }
     } catch (error) {
       //pendiente de meter este error en state para pintarlo en pantalla
@@ -41,7 +52,6 @@ const Login = () => {
 
   return (
     <>
-      <NavbarCustom />
       <div className="form">
         <div className="col-12 col-md-6 col-lg-6">
           <InputCustom

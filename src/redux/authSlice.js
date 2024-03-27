@@ -10,6 +10,7 @@ export const authSlice = createSlice({
     setAuthToken: (state, action) => {
       state.token = action.payload.token
       state.decodificado = action.payload.decodificado
+      state.roleName = action.payload.decodificado.roleName
     },
     clearAuthToken: (state) => {
       state.token = null

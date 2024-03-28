@@ -3,18 +3,30 @@ import Button from "../../components/Button/Button"
 import InputCustom from "../../components/Input/InputCustom"
 import { RegisterUser } from "../../services/services"
 import "./Register.css"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Spinner from "../../components/Spinner/Spinner"
 import Alert from "../../components/Alert/Alert"
 import { validator } from "../../utils/utils"
 
 const Register = () => {
+  const [isFormComplete, setIsFormComplete] = useState(false)
   const [user, setUser] = useState({
     first_name: "",
     last_name: "",
     email: "",
     password: "",
   })
+
+  useEffect(() => {
+    for (let elemento in user) {
+      if (user[elemento] === "") {
+        setIsFormComplete(false)
+        return
+      }
+    }
+    setIsFormComplete(true)
+  }, [user])
+  
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
   const [stateMessage, setStateMessage] = useState({
@@ -49,11 +61,6 @@ const Register = () => {
     e.preventDefault()
     setLoading(true)
     try {
-      for (let elemento in user) {
-        if (user[elemento] === "") {
-          throw new Error("Todos los campos tienen que estar rellenos")
-        }
-      }
       const userRegister = await RegisterUser(user)
       if (userRegister.success) {
         setAlert(true)
@@ -131,7 +138,11 @@ const Register = () => {
                   />
                 </div>
               )}
-              <Button text={"Registrarse"} handleSubmit={handleSubmit} />
+              <Button
+                text={"Registrarse"}
+                handleSubmit={handleSubmit}
+                isFormComplete={isFormComplete}
+              />
             </div>
           </div>
         </>

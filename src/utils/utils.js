@@ -1,9 +1,12 @@
 export const validator = (value, type) => {
+  const regexString = /^[a-zA-Z]+$/
+    const validEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/
 
   switch (type) {
     case "first_name":
       {
-        if (typeof value !== "string") {
+       
+        if (!regexString.test(value)) {
           return `El nombre tiene que estar formado por caracteres correctos (de la A a la Z).`
         }
         //si es menor de 3 letras
@@ -17,7 +20,7 @@ export const validator = (value, type) => {
         return ""
       }
     case "last_name": {
-      if (typeof value !== "string") {
+      if (!regexString.test(value)) {
         return `El apellido tiene que estar formado por caracteres correctos (de la A a la Z).`
       }
       //si es menor de 3 letras
@@ -30,7 +33,6 @@ export const validator = (value, type) => {
       }
       return ""
     }
-
     case "password": {
       if (value.length < 8 || value.length > 15) {
         return `La contraseña tiene que ser de mínimo 8 caracteres y máximo 15`
@@ -40,9 +42,7 @@ export const validator = (value, type) => {
     }
 
     case "email": {
-      //regex de email
-      const validEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/
-
+    
       if (!validEmail.test(value)) {
         return "Formato de email inválido"
       }

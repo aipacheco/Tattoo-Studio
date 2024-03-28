@@ -4,6 +4,9 @@ import InputCustom from "../../components/Input/InputCustom"
 import { RegisterUser } from "../../services/services"
 import "./Register.css"
 import { useState } from "react"
+import Spinner from "../../components/Spinner/Spinner"
+import Alert from "../../components/Alert/Alert"
+import { validator } from "../../utils/utils"
 
 const Register = () => {
   const [user, setUser] = useState({
@@ -13,6 +16,19 @@ const Register = () => {
     password: "",
   })
   const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
+  const [stateMessage, setStateMessage] = useState({
+    message: "",
+    className: "",
+  })
+  const [alert, setAlert] = useState(false)
+
+  const [userError, setUserError] = useState({
+    first_nameError: "",
+    last_nameError: "",
+    emailError: "",
+    passwordError: "",
+  })
 
   const handleChange = ({ target }) => {
     setUser((prevState) => ({
@@ -21,56 +37,105 @@ const Register = () => {
     }))
   }
 
+  const handleBlur = ({ target }) => {
+    const error = validator(target.value, target.name)
+    setUserError((prevState) => ({
+      ...prevState,
+      [target.name + "Error"]: error,
+    }))
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
-    //spinner
-    //validaciones del user
+    setLoading(true)
     try {
+      for (let elemento in user) {
+        if (user[elemento] === "") {
+          throw new Error("Todos los campos tienen que estar rellenos")
+        }
+      }
       const userRegister = await RegisterUser(user)
-      if (userRegister.success){
-        //pendiente darle un tiempo 
-        navigate("/login")
+      if (userRegister.success) {
+        setAlert(true)
+        console.log(userRegister)
+        setStateMessage({
+          message: userRegister.message,
+          className: "success",
+        })
+        setInterval(() => {
+          setAlert(false)
+          navigate("/login")
+        }, 1500)
       }
     } catch (error) {
-      //pendiente de meter este error en state para pintarlo en pantalla
+      setLoading(false)
+      setAlert(true)
+      setStateMessage({
+        message: `${error}`,
+        className: "danger",
+      })
       console.log(error)
     }
+    setLoading(false)
   }
 
   return (
     <>
-      <div className="container container-register">
-        <h1 className="">Registro de usuario</h1>
-      </div>
-      <div className="form">
-        <div className="col-12 col-md-6 col-lg-6">
-          <InputCustom
-            label={"Nombre"}
-            type={"text"}
-            name={"first_name"}
-            handleChange={handleChange}
-          />
-          <InputCustom
-            label={"Apellidos"}
-            type={"text"}
-            name={"last_name"}
-            handleChange={handleChange}
-          />
-          <InputCustom
-            label={"Email"}
-            type={"email"}
-            name={"email"}
-            handleChange={handleChange}
-          />
-          <InputCustom
-            label={"Contraseña"}
-            type={"password"}
-            name={"password"}
-            handleChange={handleChange}
-          />
-          <Button text={"Registrarse"} handleSubmit={handleSubmit} />
-        </div>
-      </div>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <>
+          <div className="container container-register">
+            <h1 className="">Registro de usuario</h1>
+          </div>
+          <div className="form">
+            <div className="col-12 col-md-6 col-lg-6">
+              <InputCustom
+                label={"Nombre"}
+                type={"text"}
+                name={"first_name"}
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+              />
+              <div className="error">{userError.first_nameError}</div>
+              <InputCustom
+                label={"Apellidos"}
+                type={"text"}
+                name={"last_name"}
+                handleChange={handleChange}
+                required
+                handleBlur={handleBlur}
+              />
+              <div className="error">{userError.last_nameError}</div>
+              <InputCustom
+                label={"Email"}
+                type={"email"}
+                name={"email"}
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+              />
+              <div className="error">{userError.emailError}</div>
+              <InputCustom
+                label={"Contraseña"}
+                type={"password"}
+                name={"password"}
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+              />
+              <div className="error">{userError.passwordError}</div>
+              {alert && (
+                <div className="d-flex justify-content-center mt-3">
+                  <Alert
+                    className={stateMessage.className}
+                    message={stateMessage.message}
+                  />
+                </div>
+              )}
+              <Button text={"Registrarse"} handleSubmit={handleSubmit} />
+            </div>
+          </div>
+        </>
+      )}
     </>
   )
 }

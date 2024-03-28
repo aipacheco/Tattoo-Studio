@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react"
 import DatePicker from "react-datepicker"
 import "./Datetime.css"
@@ -6,11 +7,13 @@ import { registerLocale } from "react-datepicker"
 import es from "date-fns/locale/es"
 
 registerLocale("es", es)
-const Datetime = () => {
+const Datetime = ({ onDateTimeChange }) => {
   const [selectedDateTime, setSelectedDateTime] = useState(null)
 
   const handleDateTimeChange = (dateTime) => {
+    console.log(dateTime)
     setSelectedDateTime(dateTime)
+    onDateTimeChange(dateTime)
   }
 
   const today = new Date()

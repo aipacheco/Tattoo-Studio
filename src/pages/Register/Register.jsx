@@ -26,7 +26,7 @@ const Register = () => {
     }
     setIsFormComplete(true)
   }, [user])
-  
+
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
   const [stateMessage, setStateMessage] = useState({
@@ -64,7 +64,6 @@ const Register = () => {
       const userRegister = await RegisterUser(user)
       if (userRegister.success) {
         setAlert(true)
-        console.log(userRegister)
         setStateMessage({
           message: userRegister.message,
           className: "success",

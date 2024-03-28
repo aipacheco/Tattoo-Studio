@@ -100,10 +100,14 @@ const Login = () => {
           {" "}
           <div className="form">
             <div className="col-12 col-md-6 col-lg-6">
-              <Alert
-                className={stateMessage.className}
-                message={stateMessage.message}
-              />
+              {alert && (
+                <div className="d-flex justify-content-center mt-3">
+                  <Alert
+                    className={stateMessage.className}
+                    message={stateMessage.message}
+                  />
+                </div>
+              )}
               <InputCustom
                 label={"Email"}
                 type={"email"}
@@ -111,6 +115,7 @@ const Login = () => {
                 handleChange={handleChange}
                 handleBlur={handleBlur}
               />
+              <div className="error">{userError.emailError}</div>
               <InputCustom
                 label={"Contraseña"}
                 type={"password"}
@@ -118,6 +123,7 @@ const Login = () => {
                 handleChange={handleChange}
                 handleBlur={handleBlur}
               />
+              <div className="error">{userError.passwordError}</div>
               <Button
                 text={"Login"}
                 handleSubmit={handleSubmit}

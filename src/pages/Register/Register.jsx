@@ -6,7 +6,7 @@ import "./Register.css"
 import { useEffect, useState } from "react"
 import Spinner from "../../components/Spinner/Spinner"
 import Alert from "../../components/Alert/Alert"
-import { validator } from "../../utils/utils"
+import { CheckForm, checkAllEmpty, validator } from "../../utils/utils"
 
 const Register = () => {
   const [isFormComplete, setIsFormComplete] = useState(false)
@@ -16,17 +16,6 @@ const Register = () => {
     email: "",
     password: "",
   })
-
-  useEffect(() => {
-    for (let elemento in user) {
-      if (user[elemento] === "") {
-        setIsFormComplete(false)
-        return
-      }
-    }
-    setIsFormComplete(true)
-  }, [user])
-
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
   const [stateMessage, setStateMessage] = useState({
@@ -34,7 +23,6 @@ const Register = () => {
     className: "",
   })
   const [alert, setAlert] = useState(false)
-
   const [userError, setUserError] = useState({
     first_nameError: "",
     last_nameError: "",
@@ -42,14 +30,21 @@ const Register = () => {
     passwordError: "",
   })
 
+  useEffect(() => {
+    const isErrorClean = checkAllEmpty(userError)
+    const isUserComplete = CheckForm(user)
+    if (isErrorClean && isUserComplete) {
+      setIsFormComplete(true)
+    } else {
+      setIsFormComplete(false)
+    }
+  }, [user, userError])
+
   const handleChange = ({ target }) => {
     setUser((prevState) => ({
       ...prevState,
       [target.name]: target.value,
     }))
-  }
-
-  const handleBlur = ({ target }) => {
     const error = validator(target.value, target.name)
     setUserError((prevState) => ({
       ...prevState,
@@ -101,7 +96,6 @@ const Register = () => {
                 type={"text"}
                 name={"first_name"}
                 handleChange={handleChange}
-                handleBlur={handleBlur}
               />
               <div className="error">{userError.first_nameError}</div>
               <InputCustom
@@ -110,7 +104,6 @@ const Register = () => {
                 name={"last_name"}
                 handleChange={handleChange}
                 required
-                handleBlur={handleBlur}
               />
               <div className="error">{userError.last_nameError}</div>
               <InputCustom
@@ -118,7 +111,6 @@ const Register = () => {
                 type={"email"}
                 name={"email"}
                 handleChange={handleChange}
-                handleBlur={handleBlur}
               />
               <div className="error">{userError.emailError}</div>
               <InputCustom
@@ -126,7 +118,6 @@ const Register = () => {
                 type={"password"}
                 name={"password"}
                 handleChange={handleChange}
-                handleBlur={handleBlur}
               />
               <div className="error">{userError.passwordError}</div>
               {alert && (

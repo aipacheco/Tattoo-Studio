@@ -9,7 +9,7 @@ import LinkButton from "../../components/LinkButton/LinkButton"
 import { decodeToken } from "react-jwt"
 import { useDispatch } from "react-redux"
 import { setAuthToken } from "../../redux/authSlice"
-import { validator } from "../../utils/utils"
+import { CheckForm, checkAllEmpty, validator } from "../../utils/utils"
 import Spinner from "../../components/Spinner/Spinner"
 
 const Login = () => {
@@ -20,16 +20,6 @@ const Login = () => {
   })
   const navigate = useNavigate()
   const [isFormComplete, setIsFormComplete] = useState(false)
-  useEffect(() => {
-    for (let elemento in user) {
-      if (user[elemento] === "") {
-        setIsFormComplete(false)
-        return
-      }
-    }
-    setIsFormComplete(true)
-  }, [user])
-
   const [loading, setLoading] = useState(false)
   const [stateMessage, setStateMessage] = useState({
     message: "",
@@ -41,13 +31,21 @@ const Login = () => {
     passwordError: "",
   })
 
+  useEffect(() => {
+    const isErrorClean = checkAllEmpty(userError)
+    const isUserComplete = CheckForm(user)
+    if (isErrorClean && isUserComplete) {
+      setIsFormComplete(true)
+    } else {
+      setIsFormComplete(false)
+    }
+  }, [user, userError])
+
   const handleChange = ({ target }) => {
     setUser((prevState) => ({
       ...prevState,
       [target.name]: target.value,
     }))
-  }
-  const handleBlur = ({ target }) => {
     const error = validator(target.value, target.name)
     setUserError((prevState) => ({
       ...prevState,
@@ -113,7 +111,6 @@ const Login = () => {
                 type={"email"}
                 name={"email"}
                 handleChange={handleChange}
-                handleBlur={handleBlur}
               />
               <div className="error">{userError.emailError}</div>
               <InputCustom
@@ -121,7 +118,6 @@ const Login = () => {
                 type={"password"}
                 name={"password"}
                 handleChange={handleChange}
-                handleBlur={handleBlur}
               />
               <div className="error">{userError.passwordError}</div>
               <Button

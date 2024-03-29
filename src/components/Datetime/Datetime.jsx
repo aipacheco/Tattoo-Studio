@@ -5,15 +5,18 @@ import "./Datetime.css"
 import "react-datepicker/dist/react-datepicker.css"
 import { registerLocale } from "react-datepicker"
 import es from "date-fns/locale/es"
+import { format } from "date-fns"
 
 registerLocale("es", es)
 const Datetime = ({ onDateTimeChange }) => {
   const [selectedDateTime, setSelectedDateTime] = useState(null)
 
   const handleDateTimeChange = (dateTime) => {
-    console.log(dateTime)
-    setSelectedDateTime(dateTime)
-    onDateTimeChange(dateTime)
+    // para formatear la fecha
+    const formattedDateTime = format(dateTime, "yyyy-MM-dd HH:mm:ss")
+    console.log(formattedDateTime) 
+    setSelectedDateTime(dateTime) 
+    onDateTimeChange(formattedDateTime) 
   }
 
   const today = new Date()

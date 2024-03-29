@@ -1,6 +1,5 @@
 const URL = "https://proyecto4.zeabur.app/api"
 
-
 export const RegisterUser = async (user) => {
   try {
     const response = await fetch(`${URL}/auth/register`, {
@@ -33,6 +32,44 @@ export const LoginUser = async (user) => {
     return data
   } catch (error) {
     console.log("Error al iniciar sesión", error)
+    throw error
+  }
+}
+
+export const PostAppointment = async (userappointment, token) => {
+  try {
+    const response = await fetch(`${URL}/appointments`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
+      body: JSON.stringify(userappointment),
+    })
+    const data = await response.json()
+    if (!data.success) {
+      throw new Error(data.message)
+    }
+    return data
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
+export const GetServices = async () => {
+  try {
+    const response = await fetch(`${URL}/services`, {
+      method: "GET",
+      redirect: "follow",
+    })
+    const data = await response.json()
+    if (!data.success) {
+      throw new Error(data.message)
+    }
+    return data
+  } catch (error) {
+    console.log(error)
     throw error
   }
 }

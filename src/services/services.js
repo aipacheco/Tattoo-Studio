@@ -1,4 +1,4 @@
-const URL = "https://proyecto4.zeabur.app/api"
+const URL = "https://proyecto4-tatuajes.zeabur.app/api"
 
 export const RegisterUser = async (user) => {
   try {
@@ -61,6 +61,26 @@ export const GetServices = async () => {
   try {
     const response = await fetch(`${URL}/services`, {
       method: "GET",
+      redirect: "follow",
+    })
+    const data = await response.json()
+    if (!data.success) {
+      throw new Error(data.message)
+    }
+    return data
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
+export const GetProfile = async (token)=>{
+  try {
+    const response = await fetch(`${URL}/users/profile`, {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+      },
       redirect: "follow",
     })
     const data = await response.json()

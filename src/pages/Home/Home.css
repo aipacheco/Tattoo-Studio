@@ -1,3 +1,7 @@
-/* #home{
+.home{
     scroll-behavior: smooth;
-} */
+}
+iframe{
+    width: 100em;
+    height: 30em;
+}

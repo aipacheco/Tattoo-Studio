@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { NavLink } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import "./NavbarCustom.css"
 import DropdownMenu from "../DropdownMenu/DropdownMenu"
 import ButtonsNavbar from "../ButtonsNavbar/ButtonsNavbar"
@@ -20,9 +20,9 @@ export const NavbarCustom = () => {
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
-        <NavLink to="/">
+        <Link to="/">
           <div className="brand">Magik Ink</div>
-        </NavLink>
+        </Link>
         {isLoggedIn ? <DropdownMenu /> : <ButtonsNavbar />}
       </div>
     </nav>

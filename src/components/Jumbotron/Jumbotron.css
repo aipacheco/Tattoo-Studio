@@ -1,5 +1,5 @@
 .jumbotron {
-  height: 35em;
+  height: 30em;
   width: auto;
   -webkit-animation: fade-in-fwd 1s ease-in both;
   animation: fade-in-fwd 1s ease-in both;
@@ -35,7 +35,7 @@
 }
 .jumbotron .card-title {
   font-family: "Sedgwick Ave", cursive;
-  font-size: 8em;
+  font-size: 7em;
   color: rgb(10, 0, 30);
   text-shadow: 2px 2px 2px rgba(196, 196, 196, 0.804);
 }

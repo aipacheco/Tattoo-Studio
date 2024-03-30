@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import "./LinkButton.css"
 
-const LinkButton = ({direction, text, type, altColor}) => {
+export const LinkButton = ({direction, text, type, altColor}) => {
 
   const buttonClass = altColor ? "btn btn-secondary" : "btn btn-outline-light m-2";
 

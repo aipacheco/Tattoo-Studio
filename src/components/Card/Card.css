@@ -1,0 +1,12 @@
+.card-service{
+    width: 20em;
+    border:none;
+    background-color: rgba(236, 252, 246, 0.913)
+    /* background-color: rgb(255, 250, 244); */
+
+}
+.card-img-top {
+    height: 15em;
+    width: 20em;
+    object-fit: cover;
+  }

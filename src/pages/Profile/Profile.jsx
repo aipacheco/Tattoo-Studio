@@ -26,7 +26,7 @@ const Profile = () => {
     } else {
       navigate("/login")
     }
-  }, [token])
+  }, [])
 
   const { avatar, email, first_name, last_name } = profile
 

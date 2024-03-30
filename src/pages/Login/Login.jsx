@@ -75,7 +75,7 @@ const Login = () => {
         setInterval(() => {
           setAlert(false)
           navigate("/profile")
-        }, 1500)
+        }, 750)
       }
     } catch (error) {
       setLoading(false)

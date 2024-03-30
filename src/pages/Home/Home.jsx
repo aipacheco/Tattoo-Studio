@@ -19,7 +19,6 @@ const Home = () => {
 
   useEffect(() => {
     fetchServices()
-    console.log(services)
   }, [])
 
   return (
@@ -49,7 +48,7 @@ const Home = () => {
           </div>
         )}
         <div className=" mt-3 mb-3">
-          <h1 className="center-flex">Donde estamos</h1>
+          <h1 className="center-flex">Dónde estamos</h1>
         </div>
         <div className="row center-flex m-xl-5">
           <iframe

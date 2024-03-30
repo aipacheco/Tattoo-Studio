@@ -10,7 +10,7 @@ const DropdownMenu = () => {
 
   const handleProfileClick = () => {
     if (roleName === "user") {
-      navigate("/profile")
+      navigate("/profile", { replace: true })
     }
     // pendiente añadir admin
   }

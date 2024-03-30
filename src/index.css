@@ -28,3 +28,10 @@ h1 {
 .btn-outline-light:hover{
   background-color: rgb(236, 252, 246)!important;
 }
+/* clase para centrar los divs xd */
+.center-flex {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 100%;
+}

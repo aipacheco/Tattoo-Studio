@@ -1,4 +1,4 @@
-const URL = "https://proyecto4.zeabur.app/api"
+const URL = "https://proyecto4-tatuajes.zeabur.app/api"
 
 export const RegisterUser = async (user) => {
   try {

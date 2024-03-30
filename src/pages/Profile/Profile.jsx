@@ -12,18 +12,23 @@ const Profile = () => {
   const [loading, setLoading] = useState(false)
   const [profile, setProfile] = useState([])
 
+
   const fetchProfile = async () => {
+    setLoading(true)
     const myProfile = await GetProfile(token)
     setProfile(myProfile.data)
-    console.log(profile)
+    setLoading(false)
   }
   useEffect(() => {
     if (token) {
       fetchProfile()
+      // console.log(profile)
     } else {
       navigate("/login")
     }
-  }, [token, navigate])
+  }, [token])
+
+  const { avatar, email, first_name, last_name } = profile
 
   return (
     <>
@@ -31,7 +36,12 @@ const Profile = () => {
         <Spinner />
       ) : (
         <>
-          <ProfileCard />
+          <ProfileCard
+            avatar={avatar}
+            first_name={first_name}
+            last_name={last_name}
+            email={email}
+          />
         </>
       )}
     </>

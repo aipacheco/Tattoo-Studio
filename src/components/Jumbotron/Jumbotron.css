@@ -33,7 +33,7 @@
   width: auto;
   object-fit: cover;
 }
-.card-title {
+.jumbotron .card-title {
   font-family: "Sedgwick Ave", cursive;
   font-size: 8em;
   color: rgb(10, 0, 30);

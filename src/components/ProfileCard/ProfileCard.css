@@ -15,8 +15,17 @@
   background-color: rgb(36, 36, 36);
   background-image: radial-gradient(
     circle,
-    #ff000098 1%,
+    #ff0000a5 1%,
     transparent 1%
   ); /* Degradado de puntos rojos */
   background-size: 10px 10px; /* Tamaño de los puntos */
+}
+.material-symbols-outlined {
+  cursor: pointer;
+  display: block;
+  text-align: right;
+}
+.card-body-prof{
+  background-color: rgb(36, 36, 36);
+  color: rgb(236, 252, 246)
 }

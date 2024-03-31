@@ -17,9 +17,9 @@ a {
 a:hover {
   color: inherit;
 }
-div {
-  border: 1px solid red;
-}
+/* div {
+  border: 0.5px solid red;
+} */
 
 h1 {
   font-family: "Sedgwick Ave", cursive;

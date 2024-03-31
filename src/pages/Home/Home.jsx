@@ -42,7 +42,7 @@ const Home = () => {
                 />
               ))}
               <div className="center-flex mt-3 mb-3">
-                <LinkButton direction={"/appointment"} text={"Pide tu cita"} />
+                <LinkButton direction={"/appointment"} text={"Pide tu cita ahora"} />
               </div>
             </div>
           </div>

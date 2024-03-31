@@ -28,7 +28,6 @@ const Appointment = () => {
   const fetchData = async () => {
     const allServices = await GetServices()
     setServices(allServices.data)
-    // console.log(services)
   }
 
   useEffect(() => {
@@ -52,7 +51,6 @@ const Appointment = () => {
     e.preventDefault()
     setLoading(true)
     try {
-      // console.log(appointment)
       const postAppointment = await PostAppointment(appointment, token)
       if (postAppointment.success) {
         setAlert(true)

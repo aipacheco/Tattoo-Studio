@@ -6,6 +6,9 @@ import { useSelector } from "react-redux"
 import Spinner from "../../components/Spinner/Spinner"
 import { GetMyAppointments, GetProfile } from "../../services/services"
 import ProfileCard from "../../components/ProfileCard/ProfileCard"
+import DataTable from "react-data-table-component"
+import LinkButton from "../../components/LinkButton/LinkButton"
+import { format, addHours } from "date-fns"
 
 const Profile = () => {
   const navigate = useNavigate()
@@ -22,6 +25,15 @@ const Profile = () => {
     setAppointments(myAppointments.message)
     setLoading(false)
   }
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString)
+    //para poder restarle dos horas
+    const dateMinusTwoHours = addHours(date, -2)
+    const formattedDateTime = format(dateMinusTwoHours, "dd-MM-yyyy HH:mm")
+    return formattedDateTime
+  }
+
   useEffect(() => {
     if (token) {
       fetchProfile()
@@ -30,6 +42,22 @@ const Profile = () => {
     }
   }, [token])
 
+  const columns = [
+    {
+      name: "Servicio",
+      selector: (row) => row.service.serviceName,
+      sortable: true,
+    },
+    {
+      name: "Cita",
+      selector: (row) => formatDate(row.appointment_date),
+      sortable: true,
+    },
+  ]
+  const handleSelect = (state) => {
+    // para acceder a las filas seleccionadas
+    console.log(state.selectedRows)
+  }
 
   const { avatar, email, first_name, last_name } = profile
 
@@ -49,13 +77,21 @@ const Profile = () => {
           </div>
           <div className=" mt-3 mb-3">
             <h1 className="center-flex">Tus citas</h1>
-            <ul>
-              {appointments.map((app, index) => (
-                <li key={index}>
-                  {app.service.serviceName} {app.appointment_date}
-                </li>
-              ))}
-            </ul>
+            <div className="container container-fluid">
+              <DataTable
+                columns={columns}
+                data={appointments}
+                selectableRows
+                fixedHeader
+                onSelectedRowsChange={handleSelect}
+              />
+            </div>
+            <div className="center-flex mt-3 mb-3">
+              <LinkButton
+                direction={"/appointment"}
+                text={"Pide una nueva cita"}
+              />
+            </div>
           </div>
         </>
       )}

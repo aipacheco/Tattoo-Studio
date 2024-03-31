@@ -93,3 +93,23 @@ export const GetProfile = async (token)=>{
     throw error
   }
 }
+
+export const GetMyAppointments = async (token)=>{
+  try {
+    const response = await fetch(`${URL}/appointments`, {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${token}`,
+      },
+      redirect: "follow",
+    })
+    const data = await response.json()
+    if (!data.success) {
+      throw new Error(data.message)
+    }
+    return data
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}

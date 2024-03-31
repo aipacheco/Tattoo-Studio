@@ -60,10 +60,10 @@ const Appointment = () => {
           message:"Cita creada correctamente",
           className: "success",
         })
-        setInterval(() => {
+        setTimeout(() => {
           setAlert(false)
           navigate("/profile")
-        }, 1500)
+        }, 750)
       }
     } catch (error) {
       setLoading(false)

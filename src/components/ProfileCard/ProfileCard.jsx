@@ -3,10 +3,10 @@ import "./ProfileCard.css"
 const ProfileCard = ({ avatar, email, first_name, last_name }) => {
   return (
     <>
-     <div className="profile-card center-flex">
+ <div className="profile-card center-flex">
         <div className="card card-prof">
           <div className="row g-0">
-            <div className="col-md-6">
+            <div className="col-md-6 img-container">
               <img
                 src={avatar}
                 className="img-fluid centered-img"

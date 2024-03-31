@@ -20,7 +20,7 @@ export const NavbarCustom = () => {
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
-        <Link to="/"  replace >
+        <Link to="/">
           <div className="brand">Magik Ink</div>
         </Link>
         {isLoggedIn ? <DropdownMenu /> : <ButtonsNavbar />}

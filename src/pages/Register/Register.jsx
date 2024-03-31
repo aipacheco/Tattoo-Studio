@@ -63,10 +63,10 @@ const Register = () => {
           message: userRegister.message,
           className: "success",
         })
-        setInterval(() => {
+        setTimeout(() => {
           setAlert(false)
           navigate("/login")
-        }, 1500)
+        }, 750)
       }
     } catch (error) {
       setLoading(false)

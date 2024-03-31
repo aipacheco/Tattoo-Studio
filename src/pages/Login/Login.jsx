@@ -72,7 +72,7 @@ const Login = () => {
           message: userLogged.message,
           className: "success",
         })
-        setInterval(() => {
+        setTimeout(() => {
           setAlert(false)
           navigate("/profile")
         }, 750)

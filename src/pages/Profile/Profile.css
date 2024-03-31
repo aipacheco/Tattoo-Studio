@@ -1,7 +1,7 @@
 .cYgWVI {
   background-color: rgb(94, 0, 0);
   color: rgb(236, 252, 246);
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 .kaPjvb {
   background-color: rgb(94, 0, 0);
@@ -13,4 +13,24 @@
 }
 .rdt_TableCell {
   background-color: rgb(36, 36, 36);
+}
+.center-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75%;
+}
+.modal-content {
+  background-color: rgb(36, 36, 36);
+}
+.faZveH {
+  width: 5em;
+  flex-shrink: calc();
+}
+
+.inIBgH {
+  display: none !important;
+}
+.iJdfvk {
+  display: none;
 }

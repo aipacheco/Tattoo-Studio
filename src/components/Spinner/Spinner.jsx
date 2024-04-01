@@ -1,11 +1,12 @@
 import "./Spinner.css"
+import starImage from './../../assets/star.png'
 
 const Spinner = () => {
   return (
     <div className="container-fluid d-flex justify-content-center mt-5">
       {" "}
       <img
-        src="./../../assets/star.png"
+        src={starImage}
         alt="Cargando..."
         className="loading-image"
       />

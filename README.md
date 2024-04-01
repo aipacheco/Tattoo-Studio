@@ -1,4 +1,4 @@
-# Welcome to my frontend app  
+# Estudio de Tatuajes Magik Ink  
 
 <details>
   <summary>Contenido 📝</summary>

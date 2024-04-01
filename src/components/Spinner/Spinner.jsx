@@ -5,7 +5,7 @@ const Spinner = () => {
     <div className="container-fluid d-flex justify-content-center mt-5">
       {" "}
       <img
-        src="src/assets/star.svg"
+        src="src/assets/star.png"
         alt="Cargando..."
         className="loading-image"
       />

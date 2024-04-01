@@ -97,7 +97,7 @@ const Admin = () => {
         })
         setTimeout(() => {
           setAlert(false)
-        }, 750)
+        }, 1200)
       }
       setLoading(false)
     } catch (error) {

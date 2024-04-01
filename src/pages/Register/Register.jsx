@@ -67,7 +67,7 @@ const Register = () => {
         setTimeout(() => {
           setAlert(false)
           navigate("/login")
-        }, 750)
+        }, 1200)
       }
     } catch (error) {
       setLoading(false)
@@ -90,64 +90,68 @@ const Register = () => {
           <div className="center-flex mt-5">
             <h1 className="center-flex">Registro de usuario</h1>
           </div>
-          <div className="container container-register"></div>
-          <div className="form">
-            <div className="col-12 col-md-6 col-lg-6">
-              <InputCustom
-                label={"Nombre"}
-                type={"text"}
-                name={"first_name"}
-                handleChange={handleChange}
+          {alert ? (
+            <div className="d-flex justify-content-center mt-3">
+              <Alert
+                className={stateMessage.className}
+                message={stateMessage.message}
               />
-              <div className="error">{userError.first_nameError}</div>
-              <InputCustom
-                label={"Apellidos"}
-                type={"text"}
-                name={"last_name"}
-                handleChange={handleChange}
-                required
-              />
-              <div className="error">{userError.last_nameError}</div>
-              <InputCustom
-                label={"Email"}
-                type={"email"}
-                name={"email"}
-                handleChange={handleChange}
-              />
-              <div className="error">{userError.emailError}</div>
-              <InputCustom
-                label={"Contraseña"}
-                type={"password"}
-                name={"password"}
-                handleChange={handleChange}
-              />
-              <div className="error">{userError.passwordError}</div>
-              {alert && (
-                <div className="d-flex justify-content-center mt-3">
+            </div>
+          ) : (
+            <div className="form">
+              <div className="col-12 col-md-6 col-lg-6">
+                <InputCustom
+                  label={"Nombre"}
+                  type={"text"}
+                  name={"first_name"}
+                  handleChange={handleChange}
+                />
+                <div className="error">{userError.first_nameError}</div>
+                <InputCustom
+                  label={"Apellidos"}
+                  type={"text"}
+                  name={"last_name"}
+                  handleChange={handleChange}
+                  required
+                />
+                <div className="error">{userError.last_nameError}</div>
+                <InputCustom
+                  label={"Email"}
+                  type={"email"}
+                  name={"email"}
+                  handleChange={handleChange}
+                />
+                <div className="error">{userError.emailError}</div>
+                <InputCustom
+                  label={"Contraseña"}
+                  type={"password"}
+                  name={"password"}
+                  handleChange={handleChange}
+                />
+                <div className="error">{userError.passwordError}</div>
+                {alert && (
+                  <div className="d-flex justify-content-center mt-3">
+                    <Alert
+                      className={stateMessage.className}
+                      message={stateMessage.message}
+                    />
+                  </div>
+                )}
+                <Button
+                  text={"Registrarse"}
+                  handleSubmit={handleSubmit}
+                  isFormComplete={isFormComplete}
+                />
+                <div className="login-question">
                   <Alert
-                    className={stateMessage.className}
-                    message={stateMessage.message}
+                    className={"secondary"}
+                    message="¿Ya tienes cuenta? Ve a Login para acceder"
                   />
+                  <LinkButton direction={"/login"} text={"Ir a login"} />
                 </div>
-              )}
-              <Button
-                text={"Registrarse"}
-                handleSubmit={handleSubmit}
-                isFormComplete={isFormComplete}
-              />
-              <div className="login-question">
-                <Alert
-                  className={"secondary"}
-                  message="¿Ya tienes cuenta? Ve a Login para acceder"
-                  
-                />
-                <LinkButton
-                  direction={"/login"}
-                  text={"Ir a login"}
-                />
               </div>
             </div>
-          </div>
+          )}
         </>
       )}
     </>

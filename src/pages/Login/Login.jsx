@@ -63,7 +63,7 @@ const Login = () => {
         dispatch(
           setAuthToken({
             token: userLogged.token,
-            role: userLogged.data
+            role: userLogged.data,
           })
         )
         setAlert(true)
@@ -71,16 +71,18 @@ const Login = () => {
           message: userLogged.message,
           className: "success",
         })
-        if(userLogged.data === "user"){
-        setTimeout(() => {
-          setAlert(false)
-          navigate("/profile")
-        }, 750)}
-        if(userLogged.data === "super_admin"){
+        if (userLogged.data === "user") {
+          setTimeout(() => {
+            setAlert(false)
+            navigate("/profile")
+          }, 1200)
+        }
+        if (userLogged.data === "super_admin") {
           setTimeout(() => {
             setAlert(false)
             navigate("/admin")
-          }, 750)}
+          }, 1200)
+        }
       }
     } catch (error) {
       setLoading(false)
@@ -100,54 +102,52 @@ const Login = () => {
         <Spinner />
       ) : (
         <>
-          {" "}
           <div className="center-flex mt-5">
             <h1 className="center-flex">Login</h1>
           </div>
-          <div className="form">
-            <div className="col-12 col-md-6 col-lg-6">
-              {alert && (
-                <div className="d-flex justify-content-center mt-3">
+          {alert ? (
+            <div className="d-flex justify-content-center mt-3">
+              <Alert
+                className={stateMessage.className}
+                message={stateMessage.message}
+              />
+            </div>
+          ) : (
+            <div className="form">
+              <div className="col-12 col-md-6 col-lg-6">
+                <InputCustom
+                  label={"Email"}
+                  type={"email"}
+                  name={"email"}
+                  handleChange={handleChange}
+                />
+                <div className="error">{userError.emailError}</div>
+                <InputCustom
+                  label={"Contraseña"}
+                  type={"password"}
+                  name={"password"}
+                  handleChange={handleChange}
+                />
+                <div className="error">{userError.passwordError}</div>
+                <Button
+                  text={"Login"}
+                  handleSubmit={handleSubmit}
+                  isFormComplete={isFormComplete}
+                />
+                <div className="login-question">
                   <Alert
-                    className={stateMessage.className}
-                    message={stateMessage.message}
+                    className={"secondary"}
+                    message="¿No estás registrado? Crea tu cuenta para poder acceder a
+                    nuestros servicios"
+                  />
+                  <LinkButton
+                    direction={"/register"}
+                    text={"Ir a la página de registro"}
                   />
                 </div>
-              )}
-              <InputCustom
-                label={"Email"}
-                type={"email"}
-                name={"email"}
-                handleChange={handleChange}
-              />
-              <div className="error">{userError.emailError}</div>
-              <InputCustom
-                label={"Contraseña"}
-                type={"password"}
-                name={"password"}
-                handleChange={handleChange}
-              />
-              <div className="error">{userError.passwordError}</div>
-              <Button
-                text={"Login"}
-                handleSubmit={handleSubmit}
-                isFormComplete={isFormComplete}
-              />
-              <div className="login-question">
-                <Alert
-                  className={"secondary"}
-                  message="¿No estás registrado? Crea tu cuenta para poder acceder a
-                  nuestros servicios"
-                  
-                />
-                <LinkButton
-                  direction={"/register"}
-                  text={"Ir a la página de registro"}
-                />
               </div>
-             
             </div>
-          </div>
+          )}
         </>
       )}
     </>

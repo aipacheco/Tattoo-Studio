@@ -61,7 +61,7 @@ const Appointment = () => {
         setTimeout(() => {
           setAlert(false)
           navigate("/profile")
-        }, 750)
+        }, 1200)
       }
     } catch (error) {
       setLoading(false)

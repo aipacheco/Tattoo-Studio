@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import "./ProfileCard.css"
-const ProfileCard = ({ avatar, email, first_name, last_name }) => {
+const ProfileCard = ({ avatar, email, first_name, last_name, handleEdit }) => {
   return (
     <>
       <div className="profile-card center-flex">
@@ -17,8 +17,7 @@ const ProfileCard = ({ avatar, email, first_name, last_name }) => {
               <div className="card-body card-body-prof center-flex">
                 <div className="container">
                   <h5 className="card-title">Tus datos</h5>
-                  <span className="material-symbols-outlined">edit_note</span>
-
+                  <span className="material-symbols-outlined" onClick={handleEdit}>edit_note</span>
                   <p className="card-text">Nombre: {first_name}</p>
                   <p className="card-text">Apellidos: {last_name}</p>
                   <p className="card-text">email: {email}</p>

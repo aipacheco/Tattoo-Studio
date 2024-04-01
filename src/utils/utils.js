@@ -67,3 +67,29 @@ export const CheckForm = (state) => {
 export const checkAllEmpty = (obj) => {
   return Object.values(obj).every((value) => value === "")
 }
+
+export const customStyles = {
+  headCells: {
+    style: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      textAlign: "center",
+      backgroundColor: "rgb(94, 0, 0)",
+      color: "rgb(236, 252, 246)", 
+      fontSize: "1.3em"
+
+    },
+  },
+  cells: {
+    style: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      textAlign: "center",
+      color: "rgb(236, 252, 246)", 
+      fontSize: "1em"
+    },
+  },
+}
+

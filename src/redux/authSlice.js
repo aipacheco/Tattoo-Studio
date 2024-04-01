@@ -4,17 +4,17 @@ export const authSlice = createSlice({
   name: "auth",
   initialState: {
     token: null,
-    decodificado: null,
+    role: null
   },
   reducers: {
     setAuthToken: (state, action) => {
       state.token = action.payload.token
-      state.decodificado = action.payload.decodificado
-      state.roleName = action.payload.decodificado.roleName
+      state.role = action.payload.role
+
     },
     clearAuthToken: (state) => {
       state.token = null
-      state.decodificado = null
+      state.role = null
     },
   },
 })

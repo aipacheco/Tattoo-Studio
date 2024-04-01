@@ -59,12 +59,12 @@ const Login = () => {
     try {
       const userLogged = await LoginUser(user)
       if (userLogged.success) {
-        const decodificado = await decodeToken(userLogged.token)
-        // dispatch setea setAuthToken(la funcion del slicer) con el token y los datos decodificados
+        /* dispatch setea setAuthToken(la funcion del slicer) 
+        con el token y la data donde viene el role desde el back*/
         dispatch(
           setAuthToken({
             token: userLogged.token,
-            decodificado: decodificado,
+            role: userLogged.data
           })
         )
         setAlert(true)

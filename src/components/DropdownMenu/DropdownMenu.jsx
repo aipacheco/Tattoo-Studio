@@ -6,10 +6,10 @@ import { clearAuthToken } from "../../redux/authSlice"
 const DropdownMenu = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const roleName = useSelector((state) => state.auth.roleName)
+  const role = useSelector((state) => state.auth.role)
 
   const handleProfileClick = () => {
-    if (roleName === "user") {
+    if (role === "user") {
       navigate("/profile", { replace: true })
     }
     // pendiente añadir admin

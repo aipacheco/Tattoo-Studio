@@ -113,3 +113,24 @@ export const GetMyAppointments = async (token)=>{
     throw error
   }
 }
+
+export const UpdateProfile = async (profile, token) => {
+  try {
+    const response = await fetch(`${URL}/users/profile`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
+      body: JSON.stringify(profile),
+    })
+    const data = await response.json()
+    if (!data.success) {
+      throw new Error(data.message)
+    }
+    return data
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}

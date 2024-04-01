@@ -1,10 +1,16 @@
-import LinkButton from "../LinkButton/LinkButton"
+import { Link } from "react-router-dom"
+
 const ButtonsNavbar = () => {
   return (
     <>
       <ul className="navbar-nav d-flex">
-        <LinkButton direction={"/register"} text={"Registrarse"} />
-        <LinkButton direction={"/login"} text={"Iniciar sesión"} />
+        {" "}
+        <li className="p-1">
+          <Link to="/register">Registrarse</Link>
+        </li>
+        <li className="p-1">
+          <Link to="/login">Iniciar sesión</Link>
+        </li>
       </ul>
     </>
   )

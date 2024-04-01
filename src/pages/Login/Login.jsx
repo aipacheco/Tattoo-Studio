@@ -91,6 +91,10 @@ const Login = () => {
         message: `${error}`,
         className: "danger",
       })
+      setTimeout(() => {
+        setAlert(false)
+        navigate("/login")
+      }, 1200)
       console.log(error)
     }
     setLoading(false)

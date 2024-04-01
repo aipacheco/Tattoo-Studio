@@ -76,6 +76,10 @@ const Register = () => {
         message: `${error}`,
         className: "danger",
       })
+      setTimeout(() => {
+        setAlert(false)
+        navigate("/register")
+      }, 1200)
       console.log(error)
     }
     setLoading(false)

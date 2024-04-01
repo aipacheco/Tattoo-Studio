@@ -18,13 +18,19 @@ export const NavbarCustom = () => {
   }, [token])
 
   return (
-    <nav className="navbar navbar-expand-lg">
-      <div className="container-fluid">
-        <Link to="/">
-          <div className="brand">Magik Ink</div>
-        </Link>
-        {isLoggedIn ? <DropdownMenu /> : <ButtonsNavbar />}
-      </div>
-    </nav>
+    <nav className="navbar navbar-expand-lg p-3">
+  <div className="container-fluid">
+    <Link to="/">
+      <div className="brand">Magik Ink</div>
+    </Link>
+    <button className="navbar-toggler btn-outline-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon tex-light"></span>
+    </button>
+    
+    <div className="collapse navbar-collapse" id="navbarNavDropdown">
+      {isLoggedIn ? <DropdownMenu /> : <ButtonsNavbar />}
+    </div>
+  </div>
+</nav>
   )
 }

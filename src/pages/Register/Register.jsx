@@ -7,6 +7,7 @@ import { useEffect, useState } from "react"
 import Spinner from "../../components/Spinner/Spinner"
 import Alert from "../../components/Alert/Alert"
 import { CheckForm, checkAllEmpty, validator } from "../../utils/utils"
+import LinkButton from "../../components/LinkButton/LinkButton"
 
 const Register = () => {
   const [isFormComplete, setIsFormComplete] = useState(false)
@@ -86,11 +87,12 @@ const Register = () => {
         <Spinner />
       ) : (
         <>
-          <div className="container container-register">
-            <h1 className="">Registro de usuario</h1>
+          <div className="center-flex mt-5">
+            <h1 className="center-flex">Registro de usuario</h1>
           </div>
+          <div className="container container-register"></div>
           <div className="form">
-            <div className="col-12 col-md-6 col-lg-6">  
+            <div className="col-12 col-md-6 col-lg-6">
               <InputCustom
                 label={"Nombre"}
                 type={"text"}
@@ -133,6 +135,17 @@ const Register = () => {
                 handleSubmit={handleSubmit}
                 isFormComplete={isFormComplete}
               />
+              <div className="login-question">
+                <Alert
+                  className={"secondary"}
+                  message="¿Ya tienes cuenta? Ve a Login para acceder"
+                  
+                />
+                <LinkButton
+                  direction={"/login"}
+                  text={"Ir a login"}
+                />
+              </div>
             </div>
           </div>
         </>

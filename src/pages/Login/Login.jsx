@@ -101,6 +101,9 @@ const Login = () => {
       ) : (
         <>
           {" "}
+          <div className="center-flex mt-5">
+            <h1 className="center-flex">Login</h1>
+          </div>
           <div className="form">
             <div className="col-12 col-md-6 col-lg-6">
               {alert && (
@@ -135,14 +138,14 @@ const Login = () => {
                   className={"secondary"}
                   message="¿No estás registrado? Crea tu cuenta para poder acceder a
                   nuestros servicios"
+                  
                 />
-              </div>
-              <div className="login-button">
                 <LinkButton
                   direction={"/register"}
                   text={"Ir a la página de registro"}
                 />
               </div>
+             
             </div>
           </div>
         </>

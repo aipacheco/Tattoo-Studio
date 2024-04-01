@@ -1,0 +1,9 @@
+.container-register{
+  display: flex;
+  justify-content: center;
+}
+.form {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+}

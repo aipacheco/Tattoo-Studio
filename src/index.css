@@ -1,7 +1,42 @@
+body {
+  background-color: rgb(36, 36, 36);
+  background-image: radial-gradient(circle, #ff000098 1%, transparent 1%); /* Degradado de puntos rojos */
+  background-size: 10px 10px; /* Tamaño de los puntos */
+  color: rgb(236, 252, 246);
+  font-family: "Montserrat", sans-serif;
+
+}
 #root {
   margin: 0;
   padding: 0;
 }
-div{
-  border: 1px solid red
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  color: inherit;
+}
+/* div {
+  border: 0.5px solid red;
+} */
+
+h1 {
+  font-family: "Sedgwick Ave", cursive;
+  color: rgb(236, 252, 246);
+}
+.btn-outline-light:hover{
+  background-color: rgb(236, 252, 246)!important;
+}
+/* clase para centrar los divs xd */
+.center-flex {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 100%;
+}
+.container{
+  padding: 0;
+  margin: 0;
 }

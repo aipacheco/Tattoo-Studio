@@ -1,26 +1,29 @@
 import { useState, useEffect } from "react"
-import { NavLink } from "react-router-dom"
+import { Link } from "react-router-dom"
 import "./NavbarCustom.css"
+import DropdownMenu from "../DropdownMenu/DropdownMenu"
+import ButtonsNavbar from "../ButtonsNavbar/ButtonsNavbar"
+import { useSelector } from "react-redux"
 
 export const NavbarCustom = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const token = useSelector((state) => state.auth.token)
 
   useEffect(() => {
-    const token = localStorage.getItem("token")
     if (token) {
       setIsLoggedIn(true)
     } else {
       setIsLoggedIn(false)
     }
-  }, [])
+  }, [token])
 
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
-        <NavLink to="/">
-        <div>Magik Ink</div>
-        </NavLink>
-        {isLoggedIn ? <div>estás logado</div> : <div>no estás logado</div>}
+        <Link to="/">
+          <div className="brand">Magik Ink</div>
+        </Link>
+        {isLoggedIn ? <DropdownMenu /> : <ButtonsNavbar />}
       </div>
     </nav>
   )

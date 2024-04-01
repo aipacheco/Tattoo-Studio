@@ -1,0 +1,19 @@
+.rdt_TableCell {
+  background-color: rgb(36, 36, 36);
+}
+.center-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75%;
+}
+.modal-content {
+  background-color: rgb(36, 36, 36);
+  padding: 1.5em;
+}
+.inIBgH {
+  display: none !important;
+}
+.iJdfvk {
+  display: none !important;
+}

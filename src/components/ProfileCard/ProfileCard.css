@@ -1,0 +1,31 @@
+.card-prof {
+  width: 45em;
+  border: none;
+}
+.centered-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.img-container {
+  background-color: rgb(36, 36, 36);
+  background-image: radial-gradient(
+    circle,
+    #ff0000a5 1%,
+    transparent 1%
+  ); /* Degradado de puntos rojos */
+  background-size: 10px 10px; /* Tamaño de los puntos */
+}
+.material-symbols-outlined {
+  cursor: pointer;
+  display: block;
+  text-align: right;
+}
+.card-body-prof{
+  background-color: rgb(36, 36, 36);
+  color: rgb(236, 252, 246)
+}

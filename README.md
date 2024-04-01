@@ -23,7 +23,7 @@ Este proyecto requería conexión a una API funcional y usar react para crear un
   
 ## Deploy 🚀
 <div align="center">
-    <a href="https://www.google.com"><strong>Url a producción </strong></a>🚀🚀🚀
+    <a href="https://main.d1y1fhubg3l0md.amplifyapp.com/"><strong>Url a producción </strong></a>🚀🚀🚀
 </div>
 
 ## Stack

@@ -134,3 +134,24 @@ export const UpdateProfile = async (profile, token) => {
     throw error
   }
 }
+
+export const DeleteAppointment = async (id, token)=>{
+
+try {
+    const response = await fetch(`${URL}/appointments/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
+    })
+    const data = await response.json()
+    if (!data.success) {
+      throw new Error(data.message)
+    }
+    return data
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 import Spinner from "../../components/Spinner/Spinner"
 import {
+  DeleteAppointment,
   GetMyAppointments,
   GetProfile,
   UpdateProfile,
@@ -49,6 +50,7 @@ const Profile = () => {
     setLoading(false)
   }
 
+  //formateo de la fecha para usarlo luego en la vista de las citas
   const formatDate = (dateString) => {
     const date = new Date(dateString)
     //para poder restarle dos horas
@@ -58,6 +60,9 @@ const Profile = () => {
   }
 
   useEffect(() => {
+    if (token && role === "super_admin") {
+      navigate("/admin")
+    }
     if (token && role === "user") {
       fetchProfile()
     } else {
@@ -92,16 +97,43 @@ const Profile = () => {
   const handleDeleteClick = (appointment) => {
     //lo setea a selectedAppointment
     setSelectedAppointment(appointment)
-    console.log(appointment)
     setIsModalOpen(true)
   }
 
-  const handleConfirmDelete = () => {
-    console.log(selectedAppointment)
+  const handleConfirmDelete = async (e) => {
+    e.preventDefault()
+    const id = selectedAppointment.id
+    // console.log(selectedAppointment.id)
+    setLoading(true)
+    try {
+      const deletedApp = await DeleteAppointment(id, token)
+      if (deletedApp.success) {
+        //hay que volver a hacer fetch para traer los datos de nuevo
+        await fetchProfile()
+        setAlert(true)
+        setStateMessage({
+          message: deletedApp.message,
+          className: "success",
+        })
+        setTimeout(() => {
+          setAlert(false)
+        }, 750)
+      }
+      setLoading(false)
+    } catch (error) {
+      setLoading(false)
+      setAlert(true)
+      setStateMessage({
+        message: `${error}`,
+        className: "danger",
+      })
+    }
+    setIsModalOpen(false)
   }
 
   //para el modal de editar
   const handleEdit = () => {
+    //para traer los datos del usuario
     setEditProfile(profile)
     setIsEditModalOpen(true)
   }
@@ -117,6 +149,7 @@ const Profile = () => {
 
   const handleEditSubmit = async (e) => {
     e.preventDefault()
+    setLoading(true)
     //para mandar solo estos dos campos
     const profileDataToUpdate = {
       first_name: editProfile.first_name,
@@ -125,6 +158,8 @@ const Profile = () => {
     try {
       const profileEdit = await UpdateProfile(profileDataToUpdate, token)
       if (profileEdit.success) {
+        //hay que volver a hacer fetch para traer los datos de nuevo
+        await fetchProfile()
         setAlert(true)
         setStateMessage({
           message: profileEdit.message,
@@ -134,6 +169,7 @@ const Profile = () => {
           setAlert(false)
         }, 750)
       }
+      setLoading(false)
     } catch (error) {
       setLoading(false)
       setAlert(true)
@@ -141,7 +177,6 @@ const Profile = () => {
         message: `${error}`,
         className: "danger",
       })
-      console.log(error)
     }
     setIsEditModalOpen(false)
   }

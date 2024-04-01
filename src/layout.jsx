@@ -5,6 +5,7 @@ import Register from "./pages/Register/Register"
 import Login from "./pages/Login/Login"
 import Profile from "./pages/Profile/Profile"
 import Appointment from "./pages/Appointment/Appointment"
+import Admin from "./pages/Admin/Admin"
 import { NavbarCustom } from "./components/Navbar/NavbarCustom"
 
 export const Layout = () => {
@@ -20,6 +21,7 @@ export const Layout = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="/appointment" element={<Appointment/>} />
         </Routes>
         {/* <Footer /> */}

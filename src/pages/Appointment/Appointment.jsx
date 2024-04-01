@@ -55,7 +55,7 @@ const Appointment = () => {
       if (postAppointment.success) {
         setAlert(true)
         setStateMessage({
-          message:"Cita creada correctamente",
+          message: "Cita creada correctamente",
           className: "success",
         })
         setTimeout(() => {
@@ -88,11 +88,13 @@ const Appointment = () => {
         <Spinner />
       ) : (
         <>
-          <div className="container d-flex justify-content-center mt-2">
+          <div className="center-flex">
             <div className="col-12 col-md-6 col-lg-6">
-              <h1 className="d-flex justify-content-center">
-                Selecciona fecha y hora
-              </h1>
+              
+              <div className="center-flex mt-5">
+                <h1 className="center-flex">Selecciona fecha y hora</h1>
+              </div>
+              
               {alert && (
                 <div className="d-flex justify-content-center mt-3">
                   <Alert
@@ -102,6 +104,7 @@ const Appointment = () => {
                 </div>
               )}
               <Datetime onDateTimeChange={handleDateTimeChange} />
+
               <div className="d-flex justify-content-center m-3">
                 <select
                   className="form-select"
@@ -121,10 +124,10 @@ const Appointment = () => {
             </div>
           </div>
           <Button
-            text={"Pedir cita"}
-            isFormComplete={isFormComplete}
-            handleSubmit={handleSubmit}
-          />
+              text={"Pedir cita"}
+              isFormComplete={isFormComplete}
+              handleSubmit={handleSubmit}
+            />
         </>
       )}
     </>

@@ -1,6 +1,7 @@
 .jumbotron {
   height: 30em;
   width: auto;
+  border: none;
   -webkit-animation: fade-in-fwd 1s ease-in both;
   animation: fade-in-fwd 1s ease-in both;
 }

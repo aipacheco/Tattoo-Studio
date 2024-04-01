@@ -15,7 +15,7 @@ import DataTable from "react-data-table-component"
 import LinkButton from "../../components/LinkButton/LinkButton"
 import { format, addHours } from "date-fns"
 import { Modal } from "reactstrap"
-import { customStyles } from "../../utils/utils"
+import { customStyles, validator } from "../../utils/utils"
 import Alert from "../../components/Alert/Alert"
 
 const Profile = () => {
@@ -39,14 +39,23 @@ const Profile = () => {
     className: "",
   })
   const [alert, setAlert] = useState(false)
+  const [editProfileError, setEditProfileError] = useState({
+    first_nameError: "",
+    last_nameError: "",
+  })
 
   const fetchProfile = async () => {
     setLoading(true)
-    //pendiente manejo de errores
-    const myProfile = await GetProfile(token)
-    setProfile(myProfile.data)
-    const myAppointments = await GetMyAppointments(token)
-    setAppointments(myAppointments.message)
+    try {
+      const myProfile = await GetProfile(token)
+      setProfile(myProfile.data)
+      const myAppointments = await GetMyAppointments(token)
+      setAppointments(
+        Array.isArray(myAppointments.message) ? myAppointments.message : []
+      )
+    } catch (error) {
+      console.error("Error fetching profile or appointments:", error)
+    }
     setLoading(false)
   }
 
@@ -145,6 +154,11 @@ const Profile = () => {
       ...prevProfile,
       [name]: value,
     }))
+    const error = validator(value, name)
+    setEditProfileError((prevState) => ({
+      ...prevState,
+      [name + "Error"]: error,
+    }))
   }
 
   const handleEditSubmit = async (e) => {
@@ -224,6 +238,7 @@ const Profile = () => {
                 value={editProfile.first_name || ""}
                 onChange={handleChange}
               />
+              <div className="error">{editProfileError.first_nameError}</div>
               <input
                 type="text"
                 name="last_name"
@@ -231,6 +246,7 @@ const Profile = () => {
                 value={editProfile.last_name || ""}
                 onChange={handleChange}
               />
+              <div className="error">{editProfileError.first_nameError}</div>
               <button className="btn btn-outline-light mt-3" type="submit">
                 Guardar Cambios
               </button>
@@ -261,19 +277,26 @@ const Profile = () => {
               </div>
             )}
           </div>
-
-          <h1 className="center-flex">Tus citas</h1>
-          <div className="center-flex">
-            <div className="container">
-              <DataTable
-                columns={columns}
-                data={appointments}
-                customStyles={customStyles}
-                selectableRows
-                fixedHeader
-              />
+          {appointments.length > 0 ? (
+            <>
+              <h1 className="center-flex">Tus citas</h1>
+              <div className="center-flex">
+                <div className="container">
+                  <DataTable
+                    columns={columns}
+                    data={appointments}
+                    customStyles={customStyles}
+                    selectableRows
+                    fixedHeader
+                  />
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className="center-flex mt-5 mb-3">
+              <h1 className="center-flex">No tienes citas</h1>
             </div>
-          </div>
+          )}
           <div className="center-flex mt-3 mb-3">
             <LinkButton
               direction={"/appointment"}

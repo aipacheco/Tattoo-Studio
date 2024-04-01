@@ -90,7 +90,7 @@ const Register = () => {
             <h1 className="">Registro de usuario</h1>
           </div>
           <div className="form">
-            <div className="col-12 col-md-6 col-lg-6">
+            <div className="col-12 col-md-6 col-lg-6">  
               <InputCustom
                 label={"Nombre"}
                 type={"text"}

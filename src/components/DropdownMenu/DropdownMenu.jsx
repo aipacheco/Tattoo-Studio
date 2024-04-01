@@ -17,7 +17,6 @@ const DropdownMenu = () => {
     if (superAdmin) {
       navigate("/admin", { replace: true })
     }
-    console.log(user)
   }
 
   const handleLogout = () => {

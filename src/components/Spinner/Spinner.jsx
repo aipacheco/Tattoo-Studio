@@ -1,5 +1,5 @@
 import "./Spinner.css"
-import starImage from './../../assets/star.png'
+import starImage from './../../assets/star.svg'
 
 const Spinner = () => {
   return (

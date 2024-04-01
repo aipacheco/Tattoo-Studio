@@ -12,7 +12,9 @@ const DropdownMenu = () => {
     if (role === "user") {
       navigate("/profile", { replace: true })
     }
-    // pendiente añadir admin
+    if (role === "super_admin") {
+      navigate("/admin", { replace: true })
+    }
   }
 
   const handleLogout = () => {

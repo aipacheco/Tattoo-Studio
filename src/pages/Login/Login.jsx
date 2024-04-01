@@ -71,10 +71,16 @@ const Login = () => {
           message: userLogged.message,
           className: "success",
         })
+        if(userLogged.data === "user"){
         setTimeout(() => {
           setAlert(false)
           navigate("/profile")
-        }, 750)
+        }, 750)}
+        if(userLogged.data === "super_admin"){
+          setTimeout(() => {
+            setAlert(false)
+            navigate("/admin")
+          }, 750)}
       }
     } catch (error) {
       setLoading(false)

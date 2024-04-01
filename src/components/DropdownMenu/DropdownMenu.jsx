@@ -7,14 +7,17 @@ const DropdownMenu = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const role = useSelector((state) => state.auth.role)
+  const user = role === "user"
+  const superAdmin = role === "super_admin"
 
   const handleProfileClick = () => {
-    if (role === "user") {
+    if (user) {
       navigate("/profile", { replace: true })
     }
-    if (role === "super_admin") {
+    if (superAdmin) {
       navigate("/admin", { replace: true })
     }
+    console.log(user)
   }
 
   const handleLogout = () => {
@@ -38,7 +41,7 @@ const DropdownMenu = () => {
         <ul className="dropdown-menu dropdown-menu-end ">
           <li onClick={handleProfileClick}>
             <p className="dropdown-item">
-              <i className="fa-solid fa-user me-1"></i> Mi perfil
+              <i className="fa-solid fa-user me-1"></i> {user ? ("Mi perfil") : ("Administración")}
             </p>
           </li>
           <li onClick={handleLogout}>

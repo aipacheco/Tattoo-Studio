@@ -5,8 +5,10 @@ import { useEffect, useState } from "react"
 import { GetServices } from "../../services/services"
 import Spinner from "../../components/Spinner/Spinner"
 import LinkButton from "../../components/LinkButton/LinkButton"
+import { useSelector } from "react-redux"
 
 const Home = () => {
+  const token = useSelector((state) => state.auth.token)
   const [loading, setLoading] = useState(false)
   const [services, setServices] = useState([])
 
@@ -40,10 +42,17 @@ const Home = () => {
                 />
               ))}
               <div className="center-flex m-5">
-                <LinkButton
-                  direction={"/appointment"}
-                  text={"Pide tu cita ahora"}
-                />
+                {token ? (
+                  <LinkButton
+                    direction={"/appointment"}
+                    text={"Pide tu cita ahora"}
+                  />
+                ) : (
+                  <LinkButton
+                    direction={"/register"}
+                    text={"Regístrate para poder pedir cita"}
+                  />
+                )}
               </div>
             </div>
           </div>

@@ -59,7 +59,9 @@ Admin
 ## Futuras funcionalidades
   
 ⬜ Cambio de imagen del usuario 
+
 ⬜ Vista detallada de servicio 
+
 ⬜ Posibilidad de volver a activar un usuario desde Admin  
 
 

@@ -23,6 +23,14 @@ Este proyecto requería conexión a una API funcional y usar react para crear un
 
 Repoistorio de la api: https://github.com/aipacheco/Proyecto4-tatuajes
 
+#### IMPORTANTE PARA PROFESORES: 
+Usuario superadmin: 
+
+   ```
+superadmin@superadmin.com
+password: 123456789
+```
+
   
   
 ## Deploy 🚀

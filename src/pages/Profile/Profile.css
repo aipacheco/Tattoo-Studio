@@ -21,8 +21,11 @@
   width: 100%;
 }
 .eZiARW {
-  display: none;
+  display: none !important;
 }
 .dABNOU {
-  display: none;
+  display: none !important;
+}
+.gZeJQ {
+  display: none !important;
 }

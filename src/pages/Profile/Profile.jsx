@@ -15,8 +15,14 @@ import DataTable from "react-data-table-component"
 import LinkButton from "../../components/LinkButton/LinkButton"
 import { format, addHours } from "date-fns"
 import { Modal } from "reactstrap"
-import { customStyles, validator } from "../../utils/utils"
+import {
+  CheckForm,
+  checkAllEmpty,
+  customStyles,
+  validator,
+} from "../../utils/utils"
 import Alert from "../../components/Alert/Alert"
+import Button from "../../components/Button/Button"
 
 const Profile = () => {
   const navigate = useNavigate()
@@ -43,6 +49,7 @@ const Profile = () => {
     first_nameError: "",
     last_nameError: "",
   })
+  const [isFormComplete, setIsFormComplete] = useState(false)
 
   const fetchProfile = async () => {
     setLoading(true)
@@ -67,6 +74,15 @@ const Profile = () => {
     const formattedDateTime = format(dateMinusTwoHours, "dd-MM-yyyy HH:mm")
     return formattedDateTime
   }
+  useEffect(() => {
+    const isErrorClean = checkAllEmpty(editProfileError)
+    const isUserEditComplete = CheckForm(editProfile)
+    if (isErrorClean && isUserEditComplete) {
+      setIsFormComplete(true)
+    } else {
+      setIsFormComplete(false)
+    }
+  }, [editProfile, editProfileError])
 
   useEffect(() => {
     if (token && role === "super_admin") {
@@ -232,6 +248,7 @@ const Profile = () => {
             <h2>Editar Datos del Usuario</h2>
             <form onSubmit={handleEditSubmit}>
               <input
+                className="input-edit"
                 type="text"
                 name="first_name"
                 placeholder="Nombre"
@@ -240,23 +257,26 @@ const Profile = () => {
               />
               <div className="error">{editProfileError.first_nameError}</div>
               <input
+                className="input-edit"
                 type="text"
                 name="last_name"
                 placeholder="Apellidos"
                 value={editProfile.last_name || ""}
                 onChange={handleChange}
               />
-              <div className="error">{editProfileError.first_nameError}</div>
-              <button className="btn btn-outline-light mt-3" type="submit">
-                Guardar Cambios
-              </button>
-              <button
-                className="btn btn-outline-light mt-3"
-                type="button"
+              <div className="error">{editProfileError.last_nameError}</div>
+
+              <Button
+                text={"Guardar cambios"}
+                onclick={handleEditSubmit}
+                isFormComplete={isFormComplete}
+              />
+
+              <Button
+                text={"Cancelar"}
                 onClick={() => setIsEditModalOpen(false)}
-              >
-                Cancelar
-              </button>
+                isFormComplete={true}
+              />
             </form>
           </Modal>
 

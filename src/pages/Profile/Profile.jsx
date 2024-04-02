@@ -125,6 +125,10 @@ const Profile = () => {
     setIsModalOpen(true)
   }
 
+  const handleEditCancel = () => {
+    setIsModalOpen(false)
+  }
+
   const handleConfirmDelete = async (e) => {
     e.preventDefault()
     const id = selectedAppointment.id
@@ -271,12 +275,14 @@ const Profile = () => {
                 onclick={handleEditSubmit}
                 isFormComplete={isFormComplete}
               />
-
-              <Button
-                text={"Cancelar"}
-                onClick={() => setIsEditModalOpen(false)}
-                isFormComplete={true}
-              />
+              <div className="d-flex justify-content-center m-3">
+                <button
+                  className="btn btn-outline-light"
+                  onClick={() => setIsModalOpen(false)}
+                >
+                  Cancelar
+                </button>
+              </div>
             </form>
           </Modal>
 

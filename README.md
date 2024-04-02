@@ -17,7 +17,9 @@
 </details>
 
 ## Objetivo 🎯
-Este proyecto requería conexión a una API funcional y usar react para crear una web que conecte con la API encargada de gestionar el modelo de negocio de un estudio de tatuajes.
+Este proyecto requería conexión a una API funcional y usar react para crear una web que conecte con la API encargada de gestionar el modelo de negocio de un estudio de tatuajes 
+
+Repoistorio de la api: https://github.com/aipacheco/Proyecto4-tatuajes
 
   
   

@@ -34,6 +34,13 @@ Este proyecto requería conexión a una API funcional y usar react para crear un
 <a href="https://developer.mozilla.org/es/docs/Web/JavaScript">
     <img src= "https://img.shields.io/badge/javascipt-EFD81D?style=for-the-badge&logo=javascript&logoColor=black"/>
 </a>
+  <a href="https://getbootstrap.com/">
+    <img src= "https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
+</a>
+  <a href="https://developer.mozilla.org/es/docs/Web/CSS">
+    <img src= "https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
+</a>
+ 
  </div>
 
 ## Instalación en local

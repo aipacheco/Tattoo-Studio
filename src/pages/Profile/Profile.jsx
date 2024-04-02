@@ -272,7 +272,7 @@ const Profile = () => {
 
               <Button
                 text={"Guardar cambios"}
-                onclick={handleEditSubmit}
+                handleSubmit={handleEditSubmit}
                 isFormComplete={isFormComplete}
               />
               <div className="d-flex justify-content-center m-3">

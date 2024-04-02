@@ -1,6 +1,6 @@
 # Estudio de Tatuajes Magik Ink  
 
-<img src= "./src/assets/tattoo.jpg>
+<img src= "./src/assets/tattoo.jpg">
 
 <details>
   <summary>Contenido 📝</summary>
